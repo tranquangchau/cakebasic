@@ -11,6 +11,22 @@ App::uses('AppController', 'Controller');
 
 class UsersController extends AppController {
 
+    public function __construct($request = null, $response = null) {
+        parent::__construct($request, $response);
+    }
+    
+     public function beforeFilter() {
+        parent::beforeFilter();
+        // Allow users to register and logout.
+        $this->Auth->allow('index','view','logout');
+    }
+    
+//    public function lang($lang='eng') {        
+//        Configure::write('Config.language', $lang);
+//        return $this->redirect($_SERVER['HTTP_REFERER']);
+//
+//    }
+    
     public function index() {
         $this->User->recursive = 0;
         $this->set('users', $this->paginate());
@@ -72,13 +88,7 @@ class UsersController extends AppController {
         }
         $this->Flash->error(__('User was not deleted'));
         return $this->redirect(array('action' => 'index'));
-    }
-
-    public function beforeFilter() {
-        parent::beforeFilter();
-        // Allow users to register and logout.
-        $this->Auth->allow('index','view','logout');
-    }
+    }   
 
     public function login() {
         if ($this->Auth->login()) {

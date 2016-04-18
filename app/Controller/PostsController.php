@@ -11,7 +11,12 @@ class PostsController extends AppController {
     public $helpers = array('Html', 'Form');
     public $components = array('Flash');
 
+    public function __construct($request = null, $response = null) {
+        parent::__construct($request, $response);
+    }
+
     public function beforeFilter() {
+        parent::beforeFilter();
         $this->Auth->allow('index', 'view');
     }
 

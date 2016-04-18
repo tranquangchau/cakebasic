@@ -4,10 +4,10 @@
 <p><?php echo $this->Html->link('Add Post', array('action' => 'add')); ?></p>
 <table>
     <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-        <th>Created</th>
+        <th><?= __('Id')?></th>
+        <th><?= __('Title')?></th>
+        <th><?= __('Actions')?></th>
+        <th><?= __('Created')?></th>
     </tr>
 
 <!-- Here's where we loop through our $posts array, printing out post info -->

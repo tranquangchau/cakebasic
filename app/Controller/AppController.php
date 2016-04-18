@@ -35,6 +35,9 @@ class AppController extends Controller {
     //public $components=array('DebugKit.Toolbar');
 
     public $components = array(
+        'DebugKit.Toolbar',
+        'Cookie',
+        'Session',
         'Flash',
         'Auth' => array(
             'loginRedirect' => array('controller' => 'posts', 'action' => 'index'),
@@ -51,25 +54,62 @@ class AppController extends Controller {
             'authorize' => array('Controller') // Added this line
         )
     );
+    public $helpers = array('Html' => array('className' => 'MyHtml'));
 
     public function isAuthorized($user) {
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
-        }else{
+        } else {
 //             echo 'no permistion';die;
-             $this->Flash->error(__('No permission action.'));
-             return $this->redirect(array('action' => 'index'));
+            $this->Flash->error(__('No permission action.'));
+            return $this->redirect(array('action' => 'index'));
 //             return false;
         }
 
         // Default deny
-       
         //return false;
     }
 
-//    public function beforeFilter() {
-//        $this->Auth->allow('index', 'view','edit');
-//    }
+    public function beforeFilter() {
+        $this->_setLanguage();
+    }
 
+    private function _setLanguage() {
+        //echo 'lang';die;
+        //if the cookie was previously set, and Config.language has not been set
+        //write the Config.language with the value from the Cookie
+        if ($this->Cookie->read('lang') && !$this->Session->check('Config.language')) {
+            $this->Session->write('Config.language', $this->Cookie->read('lang'));
+        }
+        //if the user clicked the language URL 
+        else if (isset($this->params['language']) &&
+                ($this->params['language'] != $this->Session->read('Config.language'))
+        ) {
+            //then update the value in Session and the one in Cookie
+            $this->Session->write('Config.language', $this->params['language']);
+            $this->Cookie->write('lang', $this->params['language'], false, '20 days');
+        }
+    }
+
+    //override redirect
+    public function redirect($url, $status = NULL, $exit = true) {
+        if (!isset($url['language']) && $this->Session->check('Config.language')) {
+            $url['language'] = $this->Session->read('Config.language');
+        }
+        parent::redirect($url, $status, $exit);
+    }
+
+//    public function changeLanguage($lang) {
+//        if (!empty($lang)) {
+//            if ($lang == 'vie') {
+//                $this->Session->write('Config.language', 'vie');
+//            } else if ($lang == 'eng') {
+//                $this->Session->write('Config.language', 'eng');
+//            }
+//
+//            //in order to redirect the user to the page from which it was called
+//            $this->redirect($this->referer());
+//        }
+//    }
 }

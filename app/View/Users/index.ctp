@@ -5,10 +5,10 @@
 <table>
     <tr>
         <th>Id</th>
-        <th>Title</th>
-        <th>Actions</th>
-        <th>Role</th>
-        <th>Created</th>
+        <th><?= __('Title')?></th>
+        <th><?= __('Actions')?></th>
+        <th><?= __('Role')?></th>
+        <th><?= __('Created')?></th>
     </tr>
 
 <!-- Here's where we loop through our $users array, printing out post info -->

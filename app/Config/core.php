@@ -20,6 +20,9 @@
 
 //setLocale(LC_ALL, 'deu');
 //Configure::write('Config.language', 'deu');
+//setLocale(LC_ALL, 'eng');
+Configure::write('Config.language', 'eng');
+
 
 /**
  * CakePHP Debug Level:
@@ -387,3 +390,4 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+

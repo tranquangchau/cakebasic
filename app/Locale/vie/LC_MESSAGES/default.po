@@ -1,0 +1,17 @@
+msgid "English"
+msgstr "Tiếng Anh"
+
+msgid "Vietnam"
+msgstr "Tiếng Việt"
+
+msgid "Title"
+msgstr "Tiêu đề"
+
+msgid "Actions"
+msgstr "Hành động"
+
+msgid "Role"
+msgstr "Quyền"
+
+msgid "Created"
+msgstr "Ngày tạo"
