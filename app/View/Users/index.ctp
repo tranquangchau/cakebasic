@@ -7,6 +7,7 @@
         <th>Id</th>
         <th>Title</th>
         <th>Actions</th>
+        <th>Role</th>
         <th>Created</th>
     </tr>
 
@@ -36,6 +37,9 @@
                     'Edit', array('action' => 'edit', $users['User']['id'])
                 );
             ?>
+        </td>
+        <td>
+            <?php echo $users['User']['role']; ?>
         </td>
         <td>
             <?php echo $users['User']['created']; ?>

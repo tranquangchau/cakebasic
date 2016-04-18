@@ -56,14 +56,20 @@ class AppController extends Controller {
         // Admin can access every action
         if (isset($user['role']) && $user['role'] === 'admin') {
             return true;
+        }else{
+//             echo 'no permistion';die;
+             $this->Flash->error(__('No permission action.'));
+             return $this->redirect(array('action' => 'index'));
+//             return false;
         }
 
         // Default deny
-        return false;
+       
+        //return false;
     }
 
-    public function beforeFilter() {
-        $this->Auth->allow('index', 'view');
-    }
+//    public function beforeFilter() {
+//        $this->Auth->allow('index', 'view','edit');
+//    }
 
 }
