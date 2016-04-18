@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 17, 2016 at 07:40 PM
+-- Generation Time: Apr 18, 2016 at 06:51 AM
 -- Server version: 5.6.24
 -- PHP Version: 5.6.8
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `body`, `created`, `modified`, `user_id`) VALUES
-(2, 'A title once again122', 'And the post body follows.', '2016-04-18 00:22:28', '2016-04-17 19:38:10', 1),
+(2, 'A title once again', 'And the post body follows.', '2016-04-18 00:22:28', '2016-04-18 06:06:25', 1),
 (3, 'Title strikes back', 'This is really exciting! Not.', '2016-04-18 00:22:28', NULL, NULL);
 
 -- --------------------------------------------------------
@@ -56,14 +56,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `role` varchar(20) DEFAULT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `role`, `created`, `modified`) VALUES
-(1, 'chau2', '$2a$10$ZPhik/bNapA4HoaggqiuEuBV.1cZbTdJyMNxM31D1Pp1bS1KJ9mHu', 'admin', '2016-04-17 19:36:47', '2016-04-17 19:39:28');
+(1, 'chau2', '$2a$10$ZPhik/bNapA4HoaggqiuEuBV.1cZbTdJyMNxM31D1Pp1bS1KJ9mHu', 'admin', '2016-04-17 19:36:47', '2016-04-17 19:39:28'),
+(2, 'user', '$2a$10$LREuy1dB9Se0JeufY6XobO1NBmCUiBhbPS6HZmZTL7hDOxX8Ii54C', 'author', '2016-04-18 06:06:52', '2016-04-18 06:06:52'),
+(3, 'admin', '$2a$10$zpcPvoFxxZ.RiNWaEPtfw.IHa7g1lGNIFIzlJbbbaM9oFdfD4AWQa', 'admin', '2016-04-18 06:50:40', '2016-04-18 06:50:40');
 
 --
 -- Indexes for dumped tables
@@ -94,7 +96,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(10) unsigned NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

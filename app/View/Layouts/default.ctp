@@ -40,7 +40,10 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <h1><?php echo $this->Html->link($cakeDescription, ''); ?></h1>
                 <?php
                 //$this->Html->addCrumb('Users', '/users');
-                echo $this->Html->getCrumbs(' > ', 'Home');
+//                echo $this->Html->getCrumbs(' > ', 'Home');
+                echo $this->Html->link('Posts', 'http://localhost/cakebasic/posts');
+                echo '&nbsp';
+                echo $this->Html->link('Users', 'http://localhost/cakebasic/users');
                 $user = $this->Session->read('Auth.User');                
                 if (empty($user)) {
                     echo $this->Html->link('Login', 'http://localhost/cakebasic/users/login',array('style' => 'float:right'));
