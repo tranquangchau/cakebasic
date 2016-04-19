@@ -15,3 +15,15 @@ msgstr "Quyền"
 
 msgid "Created"
 msgstr "Ngày tạo"
+
+msgid "Logout"
+msgstr "Đăng xuất"
+
+msgid "Login"
+msgstr "Đăng nhập"
+
+msgid "Users"
+msgstr "Tài khoản"
+
+msgid "Posts"
+msgstr "Bài viết"

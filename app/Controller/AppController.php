@@ -76,9 +76,10 @@ class AppController extends Controller {
     }
 
     private function _setLanguage() {
-        //echo 'lang';die;
-        //if the cookie was previously set, and Config.language has not been set
-        //write the Config.language with the value from the Cookie
+        if (!isset($url['language']) && $this->Session->check('Config.language')) {
+            $url['language'] = $this->Session->read('Config.language');
+        }
+
         if ($this->Cookie->read('lang') && !$this->Session->check('Config.language')) {
             $this->Session->write('Config.language', $this->Cookie->read('lang'));
         }
@@ -89,27 +90,10 @@ class AppController extends Controller {
             //then update the value in Session and the one in Cookie
             $this->Session->write('Config.language', $this->params['language']);
             $this->Cookie->write('lang', $this->params['language'], false, '20 days');
+            $this->redirect($_SERVER['HTTP_REFERER']);
+        } elseif ($this->params['language'] == $this->Session->read('Config.language')) {
+            $this->redirect($_SERVER['HTTP_REFERER']);
         }
     }
 
-    //override redirect
-    public function redirect($url, $status = NULL, $exit = true) {
-        if (!isset($url['language']) && $this->Session->check('Config.language')) {
-            $url['language'] = $this->Session->read('Config.language');
-        }
-        parent::redirect($url, $status, $exit);
-    }
-
-//    public function changeLanguage($lang) {
-//        if (!empty($lang)) {
-//            if ($lang == 'vie') {
-//                $this->Session->write('Config.language', 'vie');
-//            } else if ($lang == 'eng') {
-//                $this->Session->write('Config.language', 'eng');
-//            }
-//
-//            //in order to redirect the user to the page from which it was called
-//            $this->redirect($this->referer());
-//        }
-//    }
 }

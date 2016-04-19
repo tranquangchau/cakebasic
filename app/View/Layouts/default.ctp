@@ -41,14 +41,14 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <?php
                 //$this->Html->addCrumb('Users', '/users');
 //                echo $this->Html->getCrumbs(' > ', 'Home');
-                echo $this->Html->link('Posts', 'http://localhost/cakebasic/posts');
+                echo $this->Html->link(__('Posts'), 'http://localhost/cakebasic/posts');
                 echo '&nbsp';
-                echo $this->Html->link('Users', 'http://localhost/cakebasic/users');
-                $user = $this->Session->read('Auth.User');                
+                echo $this->Html->link(__('Users'), 'http://localhost/cakebasic/users');
+                $user = $this->Session->read('Auth.User');
                 if (empty($user)) {
-                    echo $this->Html->link('Login', 'http://localhost/cakebasic/users/login',array('style' => 'float:right'));
-                }else{
-                    echo $this->Html->link($user['username'].' '.'Logout', 'http://localhost/cakebasic/users/logout',array('style' => 'float:right'));
+                    echo $this->Html->link(__('Login'), 'http://localhost/cakebasic/users/login', array('style' => 'float:right'));
+                } else {
+                    echo $this->Html->link($user['username'] . ' ' . __('Logout'), 'http://localhost/cakebasic/users/logout', array('style' => 'float:right'));
                 }
                 ?>         
             </div>
@@ -59,11 +59,11 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
                 <?php echo $this->fetch('content'); ?>
             </div>
             <div id="footer">              
-                <?php 
+                <?php
 //                echo $this->Html->link();
-                echo $this->Html->link(__('English'), array('language'=>'eng')); 
+                echo $this->Html->link(__('English'), array('language' => 'eng'));
                 echo '&nbsp;';
-                echo $this->Html->link(__('Vietnam'), array('language'=>'vie')); 
+                echo $this->Html->link(__('Vietnam'), array('language' => 'vie'));
                 ?>
                 <?php
                 echo $this->Html->link(
